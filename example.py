@@ -19,7 +19,9 @@ def login():
     print("Digest size: " + str(m.digest_size) + " bytes")
     print("Block size: " + str(m.block_size) + " bytes")
 
-    print("Hex: " + hashlib.sha256(b"Nobody inspects the spammish repetition").hexdigest())
+    print("Hex: " + hashlib.sha256(b"This is a hex encryption").hexdigest())
 
 
 login()
+
+#m + B mod 26

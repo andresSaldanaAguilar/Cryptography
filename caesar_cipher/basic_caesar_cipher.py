@@ -17,7 +17,6 @@ def cipher():
         new_array.append(chr((asc%26+(k%26))%26+65))   
 
     #writes the results
-    print(new_array)
     arch_o = open('c.txt','w')
     arch_o.write(u''.join(new_array))
 
@@ -42,4 +41,5 @@ def decipher():
 def main():
     cipher()
     decipher()
+    
 main()

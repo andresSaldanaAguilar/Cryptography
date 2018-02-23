@@ -39,7 +39,14 @@ def decipher():
     arch_o.write(u''.join(new_array))
 
 def main():
-    cipher()
+    op = input("""Please selecte an option: 
+    1.-Cipher
+    2.-Decipher""")
+    if(op = 1){
+        cipher()
+    }
+    else{
     decipher()
+    }
     
 main()

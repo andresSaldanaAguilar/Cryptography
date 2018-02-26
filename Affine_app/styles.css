@@ -1,0 +1,32 @@
+.container{
+    margin-top: 3%;
+}
+
+textarea{
+    height: 40%;
+}
+
+.card-header{
+    background-color: #fff;
+}
+
+body{
+    background-image: url(banana.png);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#main-card{
+    background-color: transparent;
+    border-color: transparent;
+    opacity: 1%;
+}
+
+#decipher{
+    height: 60%;
+}
+
+a{
+    border-radius: 0%;
+}

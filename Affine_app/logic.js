@@ -2,52 +2,53 @@
 function cipher() {
     var A = parseInt(document.getElementById("alpha").value);
     var B = parseInt(document.getElementById("beta").value);
-    var msj = document.getElementById("to_cipher").value.replace(/ /g,'');
-    arr = Array.from(msj);
     
-    msj = "";
-    arr.forEach(function(element) {
-        var asc = parseInt(element.charCodeAt(0)%97);
-        var aux = String.fromCharCode(((A * asc + B)%26)+65);
-        msj = msj.concat(aux);
-    });
+    if(gcd(A,26) != 1){
+        alert("Invalid Alpha");
+        document.getElementById('decipher').value="";
+        document.getElementById('alpha').value="";
+    }
+    else{
+        var msj = document.getElementById("to_cipher").value.replace(/ /g,'');
+        arr = Array.from(msj);        
+        msj = "";
+        arr.forEach(function(element) {
+            var asc = parseInt(element.charCodeAt(0)%97);
+            var aux = String.fromCharCode(((A * asc + B)%26)+65);
+            msj = msj.concat(aux);
+        });
 
-    document.getElementById('cipher').value=msj;
-    //decipher();
+        document.getElementById('cipher').value=msj;
+    }
 }
 
 //decipher
 function decipher() {
     var A = parseInt(document.getElementById("alpha1").value,10);
     var B = parseInt(document.getElementById("beta1").value,10);
-    var msj = document.getElementById("cipher").value;
-    arr = Array.from(msj);
-    //var dict = {1:1,3:9,5:21,7:15,9:3,11:19,15:7,17:23,19:11,21:5,23:17,25:25};
-    
-    newmsj = "";
-    arr.forEach(function(element) {
-        var asc = parseInt(element.charCodeAt(0)%65,10);
-        var aux = String.fromCharCode((Euclid_gcd(A, 26) * (asc + (26-B)))%26+97);
-        newmsj = newmsj.concat(aux);
-    });
-    document.getElementById('decipher').value=newmsj;
+
+    if(gcd(A,26) != 1){
+        alert("Invalid Alpha");
+        document.getElementById('decipher').value="";
+        document.getElementById('alpha1').value="";
+    }
+    else{
+        var msj = document.getElementById("cipher").value;
+        arr = Array.from(msj);      
+        newmsj = "";
+        arr.forEach(function(element) {
+            var asc = parseInt(element.charCodeAt(0)%65,10);
+            var aux = String.fromCharCode((Euclid_gcd(A,26) * (asc + (26-B)))%26+97);
+            newmsj = newmsj.concat(aux);
+        });
+        document.getElementById('decipher').value=newmsj;
+    }
 }
 
 function Euclid_gcd(a, b) {
     a = +a;
     b = +b;
-    if (a !== a || b !== b) {
-      return [NaN, NaN, NaN];
-    }
     
-    if (a === Infinity || a === -Infinity || b === Infinity || b === -Infinity) {
-      return [Infinity, Infinity, Infinity];
-    }
-    
-    // Checks if a or b are decimals
-    if ((a % 1 !== 0) || (b % 1 !== 0)) {
-        return false;
-    }
     var signX = (a < 0) ? -1 : 1, signY = (b < 0) ? -1 : 1, x = 0, y = 1, u = 1, v = 0,q, r, m, n;
     a = Math.abs(a);
     b = Math.abs(b);
@@ -64,7 +65,24 @@ function Euclid_gcd(a, b) {
         u = m;
         v = n;
     }
+    if(signX * x < 0){
+        return 26 + (signX * x);
+    }
     return signX * x;
+}
+
+function gcd(a, b) {
+    if (a == 0)
+        return b;
+
+    while (b != 0) {
+        if (a > b)
+            a = a - b;
+        else
+            b = b - a;
+    }
+
+    return a;
 }
 
 //reads the text file

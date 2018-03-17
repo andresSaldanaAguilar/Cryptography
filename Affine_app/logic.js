@@ -1,4 +1,6 @@
-//cipher
+//-------------LOGIC OF THE PROGRAM--------------
+
+//cipher function
 function cipher() {
     var A = parseInt(document.getElementById("alpha").value);
     var B = parseInt(document.getElementById("beta").value);
@@ -22,7 +24,7 @@ function cipher() {
     }
 }
 
-//decipher
+//decipher function
 function decipher() {
     var A = parseInt(document.getElementById("alpha1").value,10);
     var B = parseInt(document.getElementById("beta1").value,10);
@@ -45,6 +47,7 @@ function decipher() {
     }
 }
 
+//Extended Euclidean Algorithm
 function Euclid_gcd(a, b) {
     a = +a;
     b = +b;
@@ -71,6 +74,7 @@ function Euclid_gcd(a, b) {
     return signX * x;
 }
 
+//GCD finder (to validate the alpha)
 function gcd(a, b) {
     if (a == 0)
         return b;
@@ -85,7 +89,7 @@ function gcd(a, b) {
     return a;
 }
 
-//reads the text file
+//reads the text file archive
 function leerArchivo(input, textArea){
     var fileInput = document.getElementById(input);
     var fileDisplayArea = document.getElementById('fileDisplayArea');

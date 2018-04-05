@@ -1,3 +1,4 @@
 *.vscode/
 /DES/nbproject/private/
 /DES/build/
+/DES/dist/
